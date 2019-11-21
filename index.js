@@ -1,11 +1,40 @@
 var Word = require("./word");
+var currentWord;
 var arrayOfWords = ["cat", "dog", "fish"];
-var newRandomWord = new Word("cat");
-// var inquirer = require("inquirer");
-function displayUnderscores(){
-    
+// var rand = arrayOfWords[Math.floor(Math.random()*arrayOfWords.length)];
+// console.log(rand);
+var newRandomWord = new Word(arrayOfWords[Math.floor(Math.random() * arrayOfWords.length)]);
+console.log(newRandomWord)
+var inquirer = require("inquirer");
+function displayUnderscores() {
+
     newRandomWord.displayRandomWord();
     // display remainging guesses. 
+}
+
+
+
+function playHangman() {
+    displayUnderscores();
+
+    inquirer.prompt([
+        {
+            type: "input",
+            message: "Guess a letter!",
+            name: "keystroke"
+        }
+    ]).then(function (user) {
+        // console.log(user.keystroke);
+        // (typeof user.keystroke);
+
+        // newRandomWord.guessCheck(user.keystroke);
+        // newRandomWord.displayUnderscores();
+
+
+
+    });
+
+
 }
 // inquirer.prompt([
 // Continuously display word and ask for user guess, then check if correct
@@ -15,7 +44,8 @@ function displayUnderscores(){
 
 
 // ]);
-newRandomWord.wordToLettersArray();
-displayUnderscores();
+// newRandomWord.wordToLettersArray();
+// playHangman();
+// displayUnderscores();
 
 // Pay attention to file structure. TEST TEST TEST as you go. Use postman to test routes before connecting to frontend. 
